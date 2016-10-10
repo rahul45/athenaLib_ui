@@ -1,0 +1,16 @@
+{
+  "name": "athena_ui",
+  "version": "1.0.0",
+  "description": "AthenaeumLibrarymanageMentSystem",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node src\\server\\server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
