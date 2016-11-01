@@ -1,1 +1,0 @@
-var cntrl = new mainController();

@@ -5,7 +5,7 @@ app.controller("loginPageCntrlr",function($scope){
 	console.log("sdfsdf...."+$scope.a);
 });
 
-app.controller("mainController",function($rootScope,$scope){
+app.controller("mainController",function($rootScope,$scope,$http){
 	console.log("inside the main controller");
 	$scope.student={};
 	$scope.isHome=false;
@@ -69,20 +69,44 @@ app.controller("mainController",function($rootScope,$scope){
 	};
 
 	$scope.selectTodayDate=function(){
-		console.log("inside the datePicker");
-		var d = new Date();
-    	var n = d.getDate();
-     	var m=d.getMonth();
-		var y=d.getFullYear();
-    	$("#joiningDate").val(n+"/"+(m+1)+"/"+y);
-	};
+		console.log("inside");
+		$http({
+  method: 'GET',
+  url: 'http://localhost:8090/athenaLib/athena/delete'
+}).then(function successCallback(response) {
+    console.log("safsfdsf");
+    // this callback will be called asynchronously
+    // when the response is available
+  }, function errorCallback(response) {
+  	console.log("error");
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+};
 
 	$scope.addNewStudent=function(student){
+		
 		this.student=student;
 		console.log("inside the function");
 		console.log("student"+student.firstName+"::"+student.dateOfJoining);
-	};
-	
+		//addNewUSer(student);/*
+
+var config = {
+                headers: {
+   				'Content-Type':'application/json',
+   				'Accept':'application/json'
+ 			}
+            };
+
+            $http.post('http://localhost:8090/athenaLib/athena/addnew', student, config)
+            .success(function (data) {
+                console.log("success");
+                $scope.PostDataResponse = data;
+            });
+        };
+
+	/**********************SEnd to backend....................*/
+
 });
 
 /*app.config(function($routeProvider) {
